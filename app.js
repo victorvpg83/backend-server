@@ -1,36 +1,26 @@
 // Requires
-const express = require('express')
-const mongoose = require('mongoose')
+require('dotenv').config()
 
-// init vars
+const express = require('express')
+const cors = require('cors')
+const { dbConnection } = require('./database/config')
+
+// create server
 const app = express()
 
+// CORS config
+app.use( cors() )
+
+// Read and parse body
+app.use( express.json() )
+
 // Connect to DB
-
-const connectDb = async() => {
-    try {
-       await mongoose.connect('mongodb://localhost:27017/hospital',{
-           useNewUrlParser: true,
-           useUnifiedTopology: true,
-           useFindAndModify:false
-       })
-       console.log('MongoDB conectada: \x1b[32m%s\x1b[0m','Escuchando') 
-    } catch (error) {
-        console.log(error)
-        process.exit(1) // stop app
-    }
-}
-
-connectDb()
+dbConnection()
 
 // Routes
-app.get( '/', ( req, res, next ) => {
-    res.status(200).json({
-        ok: true,
-        message: 'Petición realizada correctamente'
-    })
-})
-
+app.use('/api/users', require('./routes/user.routes') )
+app.use('/api/login', require('./routes/auth.routes') )
+app.use('/', require('./routes/app.routes') )
 
 // express listening
-app.listen( 3000, () => console.log('Express server en el puerto 3000: \x1b[32m%s\x1b[0m','Escuchando') )
+app.listen( process.env.PORT, () => console.log(`Express corriendo en el puerto:` + process.env.PORT ) )
