@@ -17,6 +17,9 @@ app.use( express.json() )
 // Connect to DB
 dbConnection()
 
+// Public path
+app.use( express.static('public') )
+
 // Routes
 app.use('/api/users', require('./routes/user.routes') )
 app.use('/api/login', require('./routes/auth.routes') )
