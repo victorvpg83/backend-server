@@ -11,6 +11,7 @@ const router = Router()
 
 // Obtain all Users
 router.get( '/', validateJWT, getUsers )
+
 // Create user
 router.post(
     '/', 
@@ -35,9 +36,12 @@ router.put(
     updateUser )
 
 // Delete user
-router.delete( '/:id',[
-    validateJWT
-], deleteUser )
+router.delete( 
+    '/:id',
+    [
+        validateJWT
+    ], 
+    deleteUser )
 
 
 module.exports = router

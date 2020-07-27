@@ -20,6 +20,10 @@ dbConnection()
 // Routes
 app.use('/api/users', require('./routes/user.routes') )
 app.use('/api/login', require('./routes/auth.routes') )
+app.use('/api/hospitals', require('./routes/hospital.routes') )
+app.use('/api/doctors', require('./routes/doctor.routes') )
+app.use('/api/all', require('./routes/search.routes') )
+app.use('/api/upload', require('./routes/upload.routes') )
 app.use('/', require('./routes/app.routes') )
 
 // express listening
