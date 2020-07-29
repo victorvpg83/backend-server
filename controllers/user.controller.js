@@ -137,14 +137,14 @@ const deleteUser = async ( req, res = response ) => {
 
         res.json({
             ok: true,
-            msj: 'Usuario eliminado'
+            msg: 'Usuario eliminado'
         })
         
     } catch (error) {
         console.log(error)
         res.status(500).json({
             ok: false,
-            msj: 'Ha habido un problema'
+            msg: 'Ha habido un problema'
         })
     }
 
