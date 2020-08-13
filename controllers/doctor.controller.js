@@ -8,11 +8,35 @@ const getDoctors = async ( req, res = response ) => {
                                 .populate('user', 'name img')
                                 .populate('hospital', 'name img')
 
-
     res.json({
         ok: true,
         doctors
     })
+}
+
+// Get one doctor
+const getDoctorById = async ( req, res = response ) => {
+
+    const id = req.params.id
+
+    try {
+        const doctor = await Doctor.findById( id )
+                                    .populate('user', 'name img')
+                                    .populate('hospital', 'name img')
+    
+        res.json({
+            ok: true,
+            doctor
+        })
+        
+    } catch (error) {
+        console.log(error)
+        res.json({
+            ok: false,
+            msg: 'Doctor no encontrado'
+        })
+    }
+
 }
 
 const createDoctor = async ( req, res = response ) => {
@@ -36,7 +60,7 @@ const createDoctor = async ( req, res = response ) => {
         console.log(error)
         res.status(500).json({
             ok: false,
-            msj: 'Consulte con el administrador'
+            msg: 'Consulte con el administrador'
         })
     }
 
@@ -117,5 +141,6 @@ module.exports = {
     getDoctors,
     createDoctor,
     updateDoctor,
-    deleteDoctor
+    deleteDoctor,
+    getDoctorById
 }

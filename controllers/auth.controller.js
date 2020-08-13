@@ -28,7 +28,7 @@ const login = async ( req, res = response ) => {
         if ( !validPassword ) {
             res.status(404).json({
                 ok: false,
-                msj: 'Contraseña no válida'
+                msg: 'Contraseña no válida'
             })
         }
 
@@ -97,16 +97,20 @@ const googleSignIn = async ( req, res = response ) => {
 
 }
 
-const renewToken = async ( req, res =response ) => {
+const renewToken = async ( req, res = response ) => {
 
     const uid = req.uid
 
      //GEN JWT
      const token = await genJwt( uid )
 
+     // get user
+     const user = await User.findById( uid )
+
     res.json({
         ok: true,
-        token
+        token,
+        user
     })
 
 }

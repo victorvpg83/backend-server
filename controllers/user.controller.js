@@ -98,7 +98,14 @@ const updateUser = async ( req, res = response ) => {
             }
         }
 
-        fields.email = email
+        if ( !dbUser.google ) {
+            fields.email = email
+        } else if( dbUser.email !== email ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'Los usuarios de google no pueden cambiar su correo'
+            })
+        }
 
         const updateUser = await User.findByIdAndUpdate( uid, fields, { new: true } )
 
@@ -137,14 +144,14 @@ const deleteUser = async ( req, res = response ) => {
 
         res.json({
             ok: true,
-            msj: 'Usuario eliminado'
+            msg: 'Usuario eliminado'
         })
         
     } catch (error) {
         console.log(error)
         res.status(500).json({
             ok: false,
-            msj: 'Ha habido un problema'
+            msg: 'Ha habido un problema'
         })
     }
 

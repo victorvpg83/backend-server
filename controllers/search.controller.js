@@ -53,7 +53,7 @@ const getCollectionDocs = async ( req, res = response ) => {
         default:
             return res.status(400).json({
                 ok: false,
-                msj: 'La tabla no existe'
+                msg: 'La tabla no existe'
             })
     }
     res.json({
