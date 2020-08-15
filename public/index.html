@@ -1,41 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="344177934995-suhnjvga5tscv1q01hrogci9lf9froj1.apps.googleusercontent.com">
-    <title>Demo google singIn</title>
-</head>
-<body>
-    <h1>Google SingIn</h1>
+  <meta charset="utf-8">
+  <meta name="google-signin-client_id" content="344177934995-suhnjvga5tscv1q01hrogci9lf9froj1.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js"></script>
 
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <title>Adminpro</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
 
-    <a href="#" onclick="signOut();">Sign out</a>
+   <!-- Bootstrap Core CSS -->
+   <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom CSS -->
+   <link href="assets/css/style.css" rel="stylesheet">
+   <!-- You can change the theme colors from here -->
+   <link id="theme" id="theme" rel="stylesheet">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.fe0c17d43d0ee5272cbb.css"></head>
+<body class="fix-header card-no-border fix-sidebar">
+  <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+  <div class="preloader">
+    <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Admin Pro</p>
+    </div>
+  </div>
+  <app-root></app-root>
+
+   <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="assets/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="assets/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
 
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!--Custom JavaScript -->
+    <script src="assets/js/custom.js"></script>
+    <!-- ============================================================== -->
 
-    <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-
-            const id_token = googleUser.getAuthResponse().id_token;
-            console.log(id_token)
-        }
-
-        // SignOut
-        function signOut() {
-          var auth2 = gapi.auth2.getAuthInstance();
-          auth2.signOut().then(function () {
-            console.log('User signed out.');
-          });
-          auth2.disconnect()
-        }
-    </script>
-</body>
+<script src="runtime-es2015.0811dcefd377500b5b1a.js" type="module"></script><script src="runtime-es5.0811dcefd377500b5b1a.js" nomodule defer></script><script src="polyfills-es5.1a3c78b07cd6f16c6e9a.js" nomodule defer></script><script src="polyfills-es2015.1f913f16a2d346cc8bdc.js" type="module"></script><script src="main-es2015.54de1497b8af511f4fa2.js" type="module"></script><script src="main-es5.54de1497b8af511f4fa2.js" nomodule defer></script></body>
 </html>
